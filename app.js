@@ -5,7 +5,8 @@ const logger = require('morgan');
 const mongoose = require('mongoose');
 const mongodb = 'mongodb://localhost/portfolioAPI';
 
-const experiences = require('./routes/experience');
+const experiences = require('./routes/experiences');
+const skills = require('./routes/skills');
 
 //establish database conneciton
 mongoose.createConnection(mongodb, { useMongoClient: true });
@@ -23,5 +24,7 @@ app.use(cookieParser());
 app.get('/', (req, res) => {
   res.send('Welcome to my api');
 });
-app.use('/experiences', experiences)
+app.use('/experiences', experiences);
+app.use('/skills', skills);
+
 module.exports = app;
